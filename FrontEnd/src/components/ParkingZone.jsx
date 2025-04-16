@@ -5,10 +5,10 @@ import "../css/Lot.css"
 
 export function ParkingZone({zone}) {
 
-    const { data: zoneData, isPending, error, triggerPost } = useGetFetch();
+    const { data: zoneData, isPending, error, triggerGet } = useGetFetch();
 
     useEffect(() => {
-            triggerPost(`http://localhost:8080/parkingZone/${zone}`)
+            triggerGet(`http://localhost:8080/parkingZone/${zone}`)
         }, [])
 
 

@@ -5,7 +5,7 @@ export function useGetFetch(url){
     const [isPending, setIsPending] = useState(false);
     const [error, setError] = useState(null);
 
-    const triggerPost = (url) => {
+    const triggerGet = (url) => {
         setIsPending(true);
         setError(null);
 
@@ -28,6 +28,6 @@ export function useGetFetch(url){
             })
     }
 
-    return {data, isPending, error, triggerPost};
+    return {data, isPending, error, triggerGet};
 }
 

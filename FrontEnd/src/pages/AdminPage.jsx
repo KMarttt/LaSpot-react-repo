@@ -11,16 +11,18 @@ import { ScrollUp } from "../components/ScrollUp";
 import { AdminProfile } from "../components/AdminProfile";
 import { AdminParking } from "../components/AdminParking";
 import { AdminAccounts } from "../components/AdminAccounts";
+import { ParkingOverviewAdmin } from "../components/ParkingOverviewAdmin";
 
 export function AdminPage() {
   return (
     <>
       <Header3 />
-      <AdminProfile />
+      < ParkingOverviewAdmin/>
+      {/* <AdminProfile /> */}
       {/* <AdminParking /> */}
       {/* <AdminAccounts /> */}
-      <Footer />
-      <ScrollUp />
+      {/* <Footer /> */}
+      {/* <ScrollUp /> */}
     </>
   );
 }

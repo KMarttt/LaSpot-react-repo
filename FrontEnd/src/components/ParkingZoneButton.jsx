@@ -1,15 +1,17 @@
-
+import "../css/test.css"
 
 
 export function ParkingZoneButton({zone, vacantNum, occupiedNum}) {
 
     return(
         <>
-            <button >
-                <img src={`/images/parkinglot${zone}.jpg`}></img>
-                <h2> Parking Zone {zone}</h2>
-                <p>Vacant: {vacantNum}</p>
-                <p>Occupied: {occupiedNum}</p>
+            <button className ="button" >
+                <img src={`/images/parkinglot${zone}.jpg`} className="area-image"></img>
+                <h3 className="area-name"> Parking Zone {zone}</h3>
+                <div className="slot-summary">
+                    <div>Vacant: {vacantNum}</div>
+                    <div>Occupied: {occupiedNum}</div>
+                </div>
             </button>
         </>
     )

@@ -14,18 +14,23 @@ let initWebRoutes = (app) => {
 
     router.post("/signup", signupControllers.signupPost);
 
-    // console.log("parkingZones is:", parkingControllers.parkingZones);
+    // Would get the list of parking zone and the number of available and occupied spot
     router.get("/parkingZones", parkingControllers.parkingZones)
 
+    // Would get all of the lot data in a parking zone
     router.get("/parkingZone/:zone", parkingControllers.parkingZone)
 
-    // router.get("/adminViewZone/:selectedZone", parkingControllers.adminViewZone)
+    // Would get all of hte lot data in a parking zone (admin)
+    router.get("/parkingOverviewAdmin/:selectedZone", parkingControllers.parkingOverviewAdmin)
 
     // router.get("/adminViewZone/checkingCarPlate/:inputtedCarPlate", parkingControllers.checkingCarPlate)
 
-    // router.post("/adminViewZone/allocatingParkingSpace", parkingControllers.allocatingParkingSpace)
+    // Would post to vehicle into the parking table and update lot table
 
-    // router.delete("/adminViewZone/vacatingParkingSpace/:carPlate", parkingControllers.vacatingParkingSpace)
+    router.post("/adminViewZone/parkVehicle", parkingControllers.parkVehicle)
+
+    console.log(parkingControllers.vacatingParkingSpace)
+    router.delete("/adminViewZone/vacatingParkingSpace/:vehiclePlate", parkingControllers.vacatingParkingSpace)
 
     // router.get("/accountRecord/:accountType", parkingControllers.accountRecord)
 

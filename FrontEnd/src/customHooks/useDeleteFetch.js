@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 
 export function  useDeleteFetch(url) {
     const [data, setData] = useState([]);
-    const [isPending, setIsPending] = useState(true);
+    const [isPending, setIsPending] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
+    const triggerDelete = (url) => {
+        setIsPending(true);
+        setError(null);
+
         if (!url) return;
 
         fetch(url, {
@@ -18,15 +21,15 @@ export function  useDeleteFetch(url) {
         }).then(data =>  {
             console.log(data);
             setData(data);
-            setIsPending(false);
             setError(null);
         }).catch(err => {
             setError(err.message);
+        }).finally(() => {
             setIsPending(false);
         });
-            
-    }, [url]);
+    }
 
-    return {data, isPending, error};
+
+    return {data, isPending, error, triggerDelete};
 }
 
