@@ -20,7 +20,7 @@ export function ParkingOverviewAdmin() {
         triggerGet(`http://localhost:8080/parkingOverviewAdmin/${selectedZone}`)
     }, [selectedZone, refreshKey])
     
-    // Use this variables for the Parking Status
+    // Use these variables for the Parking Status
     const numAvailable = lots.filter((lot) => lot.parking_status === "vacant").length
     const numOccupied = lots.filter((lot) => lot.parking_status === "occupied").length
     
@@ -28,7 +28,7 @@ export function ParkingOverviewAdmin() {
         <div className = "OverviewAdminBody">
             <h1>Hello! This is the Parking Overview Admin</h1>
             <br/><br/><br/>
-            {/* {Use } */}
+
             <button type="button" onClick={() => setSelectedZone("A")}>Zone A</button>
             <button type="button" onClick = {() => setSelectedZone("B")}>Zone B</button>
             <button type="button" onClick = {() => setSelectedZone("C")}>Zone C</button>     
@@ -38,41 +38,37 @@ export function ParkingOverviewAdmin() {
             <p>Occupied Spots: {numOccupied}</p>
             <br/><br/><br/>
 
-            {/* <div className="w3-container"> */}
-                <h2> Zone {selectedZone}</h2>
-                {<button type="button" onClick = {() => setShow("showAll")}> Show All </button>}
-                {<button type="button" onClick = {() => setShow("student")}> Student </button>}
-                {<button type="button" onClick = {() => setShow("worker")}> Worker </button>}
+            <h2> Zone {selectedZone}</h2>
+            {<button type="button" onClick = {() => setShow("showAll")}> Show All </button>}
+            {<button type="button" onClick = {() => setShow("student")}> Student </button>}
+            {<button type="button" onClick = {() => setShow("worker")}> Worker </button>}
 
-                <br/><br/>
-                <table className="parking-table">
-                    <thead>
-                        <tr className="parking-table-header-row">
-                            <th>Spot</th>
-                            <th>Car Plate</th>
-                            <th>ID Number</th>
-                            <th>Account Type</th>
-                            <th>Vehicle Type</th>
-                            <th>Time In</th>
-                            <th>Time Date</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody className = "parking-table-body">
-                    {isPending && <tr><td>Loading...</td></tr>}
-                    {error && <tr><td>{error.message}</td></tr>}
-                    {lots && 
-                        
-                        lots.map((lot, index)=>{
+            <br/><br/>
+            <table className="parking-table">
+                <thead>
+                    <tr className="parking-table-header-row">
+                        <th>Spot</th>
+                        <th>Car Plate</th>
+                        <th>ID Number</th>
+                        <th>Account Type</th>
+                        <th>Vehicle Type</th>
+                        <th>Time In</th>
+                        <th>Time Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody className = "parking-table-body">
+                {isPending && <tr><td>Loading...</td></tr>}
+                {error && <tr><td>{error.message}</td></tr>}
+                {lots && 
+                    lots.map((lot, index)=>{
                         return(
-                            //  {...lot}  
                             <TableBodyContent {...lot} key={index} visible = {show} onRefresh={handleRefresh}  />
                         )
-                        })
-                    }
-                    </tbody>
-                </table>
-            {/* </div> */}
+                    })
+                }
+                </tbody>
+            </table>
         </div>
     )
 }

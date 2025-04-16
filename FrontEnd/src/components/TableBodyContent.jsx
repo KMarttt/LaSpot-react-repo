@@ -5,7 +5,7 @@ import { usePostFetch } from "../customHooks/usePostFetch";
 import { useDeleteFetch } from "../customHooks/useDeleteFetch";
 // import useDeleteFetch from "../customHooks/useDeleteFetch";
 
-const TableBodyContent = ({
+TableBodyContent = ({
     onRefresh,
     visible,
     lot_id : lotID, 
@@ -16,64 +16,27 @@ const TableBodyContent = ({
     vehicle_type : vehicleType, 
     vehicle_plate : vehiclePlate, 
     occupied_at : occupiedAt
-}) =>  {
+    }) =>  {
 
+    // Initialization \\
     
-
-    const hasPosted = useRef(false);
     const inputRef = useRef(null);
     const [carPlate, setCarPlate] = useState(vehiclePlate || "");
-    const [shouldGetPlateCheck, setShouldGetPlateCheck] = useState(false);
-    const [shouldPostPlate, setShouldPostCheck] = useState(false);
-    const [shouldDelete, setShouldDelete] = useState(false);
+
     
+    // CUSTOM HOOKS \\
 
-    // // Will send request to the server to validate the plate in the database
-    // const {data : plateCheckResult, isPending: isGetPending, error: getError} =  useGetFetch(
-    //     shouldGetPlateCheck ? `http://localhost:8080/adminViewZone/checkingCarPlate/${carPlate}` : null
-    // )
-
-    // Will post the CarPlate for Vehicle Allocation
+    // Will POST the CarPlate for Vehicle Allocation
     const {data: isVehiclePostSucess, isPending: isPostPending, error: postError, triggerPost} = usePostFetch()
-
-    
-    // Will delete 
-    // const {data: isDeleteSucess, isPending: isDeletePending, error: deleteError, triggerDelete} = useDeleteFetch(
-    //     shouldDelete ? `http://localhost:8080/adminViewZone/vacatingParkingSpace/${carPlate}`: null)
-
+    // Will DELETE the vehicle from the lot
     const {data: isDeleteSucess, isPending: isDeletePending, error: deleteError, triggerDelete} = useDeleteFetch()
     
     
+    // USE EFFECTS \\
 
-    const handleDelete = () => {
-        console.log("Initiating delete...")
-        vehiclePlate ? triggerDelete(`http://localhost:8080/adminViewZone/vacatingParkingSpace/${vehiclePlate}`) : ""
-    }
-
-    // useEffect(()=>{
-    //     if (plateCheckResult.length !== 0){
-            
-    //         if (hasPosted.current) return;
-
-    //         if(plateCheckResult.isValid == true){
-    //             console.log(`the car plate is TRUE: ${plateCheckResult.message}`)
-    //             console.log(lotID, zone, carPlate);
-
-    //             if (!hasPosted.current) { // prevent duplication of request due to strict mode of react
-    //                 hasPosted.current = true
-    //                 setShouldPostCheck(true);
-    //                 // Post Call
-    //             }
-    //         } else {
-    //             setShouldGetPlateCheck(false);
-    //             setCarPlate("");
-    //             inputRef.current.placeholder = plateCheckResult.message   
-    //         }
-    //     } 
-    // }, [plateCheckResult])
-
+    
+    // Codes after the Post Operation
     useEffect(() => {
-        // console.log(isVehiclePostSucess)
         if (Object.keys(isVehiclePostSucess).length !== 0){
                 console.log(isVehiclePostSucess)
             if (isVehiclePostSucess.isValid == true){
@@ -87,6 +50,7 @@ const TableBodyContent = ({
     }, [isVehiclePostSucess])
 
 
+    // Codes after the Delete Operation
     useEffect(() => {
         if (Object.keys(isDeleteSucess).length !== 0) {
             if (isDeleteSucess.isValid == true) {
@@ -104,6 +68,8 @@ const TableBodyContent = ({
     }, [vehiclePlate])
 
 
+    // Event Handler \\
+
     // On enter, this will validate the Vehicle Plate (regular expression, and query call)
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -114,13 +80,19 @@ const TableBodyContent = ({
             if (!carPlate.match(carPlatePattern)) {
                 setCarPlate("")
                 inputRef.current.placeholder = "Invalid plate number"
-                // throw Error("Invalid Plate Number")
             } else {
-                // This will run the GET function
+                // This will run the POST Hook
                 triggerPost("http://localhost:8080/adminViewZone/parkVehicle", {lotID, zone, carPlate} )
             }
         }
     }
+
+        // Will Trigger the Delete Custom Hook
+        const handleDelete = () => {
+            console.log("Initiating delete...")
+            vehiclePlate ? triggerDelete(`http://localhost:8080/adminViewZone/vacatingParkingSpace/${vehiclePlate}`) : ""
+        }
+    
 
 
     if (visible !== "showAll"){

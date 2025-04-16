@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function  useDeleteFetch(url) {
+export function  useDeleteFetch() {
     const [data, setData] = useState([]);
     const [isPending, setIsPending] = useState(false);
     const [error, setError] = useState(null);
