@@ -5,7 +5,7 @@ import { usePostFetch } from "../customHooks/usePostFetch";
 import { useDeleteFetch } from "../customHooks/useDeleteFetch";
 // import useDeleteFetch from "../customHooks/useDeleteFetch";
 
-TableBodyContent = ({
+export const TableBodyContent = ({
     onRefresh,
     visible,
     lot_id : lotID, 
