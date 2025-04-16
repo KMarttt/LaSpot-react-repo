@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../css/Header2.css";
 
 export function Header2() {
@@ -49,13 +50,11 @@ export function Header2() {
               </li>
 
               <li className="nav__item">
-                <a
-                  href="#procedure"
-                  className="nav__link"
-                  onClick={() => setMenuOpen(false)}
-                >
+                
+                <Link to="/user">
                   Parking
-                </a>
+                </Link>
+
               </li>
 
               <li className="nav__item">

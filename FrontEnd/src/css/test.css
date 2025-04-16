@@ -1,0 +1,78 @@
+.main-grid {
+    padding: 2rem;
+    font-family: sans-serif;
+  }
+  
+  .parking-area-grid-3x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .parking-area {
+    background: #f9f9f9;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .area-image {
+    width: 100%;
+    border-radius: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .area-name {
+    margin: 0.5rem 0 0.2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .slot-summary {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+  
+  .slot-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  .slot-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
+    position: relative;
+    background-color: #fff;
+  }
+  
+  .slot-box.available {
+    border-color: green;
+  }
+  
+  .slot-box.occupied {
+    border-color: red;
+    background-color: #fdd;
+  }
+  
+  .slot-label {
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  
+  .area-name{
+    color: black;
+  }

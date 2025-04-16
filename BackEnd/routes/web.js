@@ -1,6 +1,7 @@
 import express from "express"
 import * as signupControllers from "../controllers/signupControllers.js";
-// import * as parkingControllers from "../controllers/parkingControllers.js";
+import * as parkingControllers from "../controllers/parkingControllers.js";
+
 
 let router = express.Router();
 
@@ -13,9 +14,10 @@ let initWebRoutes = (app) => {
 
     router.post("/signup", signupControllers.signupPost);
 
-    // router.get("/parkingPlace", parkingControllers.parkingPlace)
+    // console.log("parkingZones is:", parkingControllers.parkingZones);
+    router.get("/parkingZones", parkingControllers.parkingZones)
 
-    // router.get("/parkingPlace/:zone", parkingControllers.parkingZone)
+    router.get("/parkingZone/:zone", parkingControllers.parkingZone)
 
     // router.get("/adminViewZone/:selectedZone", parkingControllers.adminViewZone)
 

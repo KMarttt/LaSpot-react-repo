@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 
 export function useGetFetch(url){
     const [data, setData] = useState([]);
-    const [isPending, setIsPending] = useState(true);
+    const [isPending, setIsPending] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
+    const triggerPost = (url) => {
+        setIsPending(true);
+        setError(null);
+
         if (!url) return;
 
         fetch(url)
@@ -17,14 +20,14 @@ export function useGetFetch(url){
             }).then(data =>  {
                 console.log(data);
                 setData(data);
-                setIsPending(false);
                 setError(null);
             }).catch(err => {
                 setError(err.message);
+            }).finally(() => {
                 setIsPending(false);
-            });
-    }, [url]);
+            })
+    }
 
-    return {data, isPending, error};
+    return {data, isPending, error, triggerPost};
 }
 
