@@ -21,3 +21,21 @@ Pages/components related to Admin view:
 - AdminPage.jsx
 - ParkingOverviewAdmin
 - TableBodyContent
+
+Pages/components related to Admin History
+
+- AdminHistory (pages)
+- AdminHistory (component)
+- AdminTableFilter
+
+Pages/components related to Admin Accounts
+
+- AdminAccounts (pages)
+- AdminAccounts (component)
+- AdminTableFilter
+
+Pages/components relted to Parking Overview
+
+- ParkingOverview (pages)
+- ParkingOverview (component)
+- TableBodyParkingAdmin
