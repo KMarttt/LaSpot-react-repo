@@ -17,10 +17,10 @@ export function AdminPage() {
   return (
     <>
       <Header3 />
-      < ParkingOverviewAdmin/>
+      {/* < ParkingOverviewAdmin/> */}
       {/* <AdminProfile /> */}
       {/* <AdminParking /> */}
-      {/* <AdminAccounts /> */}
+      <AdminAccounts />
       {/* <Footer /> */}
       {/* <ScrollUp /> */}
     </>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../css/Header3.css";
 
 export function Header3() {
@@ -39,43 +40,37 @@ export function Header3() {
           >
             <ul className="nav__list">
               <li className="nav__item">
-                <a
-                  href="#home"
-                  className="nav__link"
-                  onClick={() => setMenuOpen(false)}
-                >
+                <Link to = "/adminParking" className="nav__link" onClick={() => setMenuOpen(false)}>
                   Parking Overview
-                </a>
+                </Link>
               </li>
 
               <li className="nav__item">
-                <a
-                  href="#procedure"
-                  className="nav__link"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Accounts
-                </a>
+                  <Link to="/adminAccounts" className="nav__link" onClick={() => setMenuOpen(false)}>
+                    Accounts
+                  </Link>
               </li>
 
-              {/* <li className="nav__item">
-                <a
-                  href="#parking"
+              <li className="nav__item">
+                <Link
+                  to = "/adminHistory"
                   className="nav__link"
                   onClick={() => setMenuOpen(false)}
                 >
                   History
-                </a>
-              </li> */}
+                </Link>
+              </li>
             </ul>
 
             {/* PROFILE IMAGE */}
             <div className="nav__profile">
-              <img
-                src="/images/adminProfile.jpg"
-                alt="User Profile"
-                className="profile__image"
-              />
+              <Link to = "/adminProfile">
+                <img
+                  src="/images/adminProfile.jpg"
+                  alt="User Profile"
+                  className="profile__image"
+                />
+              </Link>
             </div>
 
             {/* CLOSE BUTTON */}

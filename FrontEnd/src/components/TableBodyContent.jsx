@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { usePostFetch } from "../customHooks/usePostFetch";
 import { useDeleteFetch } from "../customHooks/useDeleteFetch";
-// import useDeleteFetch from "../customHooks/useDeleteFetch";
 
 export const TableBodyContent = ({
     onRefresh,
