@@ -201,7 +201,7 @@ export function AdminAccounts() {
                 <p>
                     Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
                 </p>
-                <div className="buttonPagination">
+                <div className="buttonPagination"> // you may use this class name to edit the pagination button
                         <button
                             onClick ={() => table.setPageIndex(0)}
                             disabled = {!table.getCanPreviousPage()}

@@ -3,7 +3,7 @@ import { useGetFetch } from "../customHooks/useGetFetch";
 
 import "../css/ParkingOverviewAdmin.css"
 
-import TableBodyContent from "./TableBodyContent";
+import TableBodyParkingAdmin from "./TableBodyParkingAdmin";
 
 export function ParkingOverviewAdmin() {
     const [selectedZone, setSelectedZone] = useState("A");
@@ -63,7 +63,7 @@ export function ParkingOverviewAdmin() {
                 {lots && 
                     lots.map((lot, index)=>{
                         return(
-                            <TableBodyContent {...lot} key={index} visible = {show} onRefresh={handleRefresh}  />
+                            <TableBodyParkingAdmin {...lot} key={index} visible = {show} onRefresh={handleRefresh}  />
                         )
                     })
                 }
